@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://img.freepik.com/fotos-premium/arbol-paisaje-piscina-agua-edificio-cascada-fondo_1073582-4787.jpg?semt=ais_hybrid');  /* Cambia a la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Aplica el desenfoque */
+    z-index: -1; /* Envía este contenedor al fondo */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.logo h1 {
+    font-size: 24px;
+}
+
+.search-bar {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.add-to-cart{
+
+    padding: 10px;
+    background-color: #ff6b00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.informacion-producto {
+
+    padding: 10px;
+    background-color: #ff6b00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.search-bar input {
+    width: 60%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px;
+    background-color: #ff6b00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-menu {
+    position: relative;
+}
+
+#profile-button {
+    background-color: #ff6b00;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    top: 40px;
+    right: 0;
+    min-width: 150px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #575757;
+}
+
+main {
+    padding: 20px;
+}
+
+.popular-games {
+
+    text-align: center;
+}
+
+.game-list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.game-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 200px;
+    text-align: center;
+}
+
+.game-card img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.game-card h3 {
+    font-size: 18px;
+}
+
+.cart-icon {
+    width: 50px;  /* Cambia el tamaño de la imagen */
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.cart-icon:hover {
+    transform: scale(1.1);  /* Efecto al pasar el ratón por encima */
+}
+
+#cart-button {
+    background: none; /* Sin fondo para el botón */
+    border: none; /* Sin borde para el botón */
+    cursor: pointer;
+}
+
+#cart-button svg {
+    fill: none; /* Sin fondo para el SVG */
+    stroke: #ffffff; /* Color del trazo del SVG */
+}

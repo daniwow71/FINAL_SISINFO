@@ -1,0 +1,103 @@
+/* Estilos generales */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos del encabezado */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Estilos del contenedor principal */
+main {
+    padding: 20px;
+    width: 100%;
+    height: calc(100% - 60px); /* Ajusta la altura restando la altura del header */
+    box-sizing: border-box;
+}
+
+/* Estilos del contenedor de información del producto */
+.product-info {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilos del título */
+.titulo_info {
+    font-size: 24px;
+    text-align: center; /* Centra el texto horizontalmente */
+    background-color: orange;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    width: fit-content; /* Ajusta el ancho al contenido */
+}
+
+.nombre-titulo{
+    font-size: 24px;
+    text-align: center; /* Centra el texto horizontalmente */
+    background-color: orange;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    width: fit-content; /* Ajusta el ancho al contenido */
+
+}
+/* Estilos de la imagen */
+.imagen_juego {
+    width: 60%; /* La imagen ocupará el 100% del ancho del contenedor */
+    height: auto; /* Mantendrá la proporción de la imagen */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: block; /* Elimina el espacio extra en la parte inferior */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    
+}
+
+/* Estilos de las valoraciones */
+.product-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.valoraciones{
+
+    font-size: 24px;
+    text-align: center; /* Centra el texto horizontalmente */
+    background-color: orange;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    width: fit-content; /* Ajusta el ancho al contenido */
+}
+
+.product-info ul li {
+    background-color: #f9f9f9;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lsitado-valoraciones{
+    font-size: 24px;
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    width: fit-content; /* Ajusta el ancho al contenido */
+}

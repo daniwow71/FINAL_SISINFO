@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Videojuegos</title>
+    <link rel="stylesheet" href="casoEstudio1.css">
+    <link rel="preload" href="normalize.css" as="style">
+    <link rel="stylesheet" href="normalize.css">
+</head>
+<body>
+    <div class="background"></div> <!-- Fondo difuminado -->
+        <header>
+            <div class="logo">
+                <h1>Tienda de Juegos</h1>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="¿Qué estás buscando?" id="search">
+                <button>Buscar</button>
+            </div>
+            <div class="profile-menu">
+                <button id="profile-button">Tu Perfil &#9660;</button>
+                <div class="dropdown-content" id="dropdown">
+                    <a href="#">Mi cuenta</a>
+                    <a href="#">Historial</a>
+                    <a href="#">Cerrar sesión</a>
+                </div>
+            </div>
+            <div class="cart">
+                <button id="cart-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                        <path d="M17 17h-11v-14h-2" />
+                        <path d="M6 5l14 1l-1 7h-13" />
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="popular-games">
+                <h2 class="Titulo_seccion_1">Juegos Populares</h2>
+                <div class="game-list" id="game-list">
+                    <!-- Los juegos se cargarán aquí dinámicamente -->
+                </div>
+            </section>
+        </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

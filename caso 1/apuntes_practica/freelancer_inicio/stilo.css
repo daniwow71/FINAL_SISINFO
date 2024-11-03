@@ -1,0 +1,477 @@
+/*
+ESPECIFICIDAD EN CSS:
+--------------------------------------------------------------------------------------
+--->Contra mas expecifico sea el selector, mas prioridad tendra
+--->Etiqueta < Clase < ID
+--->Si dos selectores tienen la misma prioridad, el que este mas abajo en el codigo tendra prioridad
+--->Si dos selectores tienen la misma prioridad y estan en el mismo nivel, el que este mas a la derecha tendra prioridad
+--->Si dos selectores tienen la misma prioridad y estan en el mismo nivel y en la misma posicion, el que este mas abajo en el codigo tendra prioridad
+--------------------------------------------------------------------------------------
+*/
+
+
+/*
+*TIPOS DE COLORES:
+--------------------------------------------------------------------------------------
+--->HEX: #ff0000
+--->RGB: rgb(255, 0, 0)
+--->RGBA: rgba(255, 0, 0, 0.5)
+--->HSL: hsl(0, 100%, 50%)
+--->HSLA: hsla(0, 100%, 50%, 0.5)
+--------------------------------------------------------------------------------------
+
+Es bueno tener un paleta de colores para almacenar todos los colores que vayamos autilizar, como si fuera una paleta
+*/
+
+/*
+*De la etiqueta html a la etiqueta body son obligatorias si querememos tener una buena relacion entre dispositivos
+*/
+
+/*
+*VARIABLES CSS:
+--------------------------------------------------------------------------------------
+--->Se definen en el root
+--->Se utilizan con la funcion var(--nombre_variable)
+--------------------------------------------------------------------------------------
+*/
+
+/*
+DIFERENTES SELECTORES DE ELEMENTOS:
+--------------------------------------------------------------------------------------
+---> Etiqueta (h1{...})
+---> Clase (.clase{...})
+---> ID (#id{...})
+---> Atributo ([atributo]{...})
+---> Combinacion_descendente (.cliente .nombre{...})
+---> Todos los hijos directos (.cliente > p{...})
+--------------------------------------------------------------------------------------
+*/
+
+/*
+TIPOS DE DISPLAY:
+--------------------------------------------------------------------------------------
+---> block: el elemento se colocara uno debajo del otro sin importar su tamaño o contenido
+---> inline: el elemento se colocara uno al lado del otro (derecha) una vez halla ocupado el espacio necesario
+--------------------------------------------------------------------------------------
+*/
+
+/*
+FLEXBOX:
+--------------------------------------------------------------------------------------
+Flexbox es un modelo de diseño que permite a los elementos tener un comportamiento predecible cuando el espacio de la pantalla cambia.
+---> display: flex;
+---> justify-content: center; (centra los elementos en el eje principal)
+---> align-items: center; (centra los elementos en el eje secundario)
+---> flex-direction: row; (por defecto)
+---> flex-direction: column; (coloca los elementos uno debajo del otro)
+---> flex-wrap: wrap; (los elementos se colocan uno debajo del otro si no caben en la pantalla)
+---> flex-wrap: nowrap; (por defecto)
+---> flex-wrap: wrap-reverse; (los elementos se colocan uno debajo del otro si no caben en la pantalla pero en orden inverso)
+---> flex-grow: 1; (el elemento crecera en proporcion al espacio disponible)
+---> flex-shrink: 1; (el elemento se encogera en proporcion al espacio disponible)
+---> flex-basis: 0; (por defecto)
+--------------------------------------------------------------------------------------
+*/
+
+/*
+*COMO ESCRIBIR CODIGO CSS:
+--------------------------------------------------------------------------------------
+
+-->BEM: Block Element Modifier
+
+--->Block: .bloque{}
+.card{}
+
+--->Element: .bloque__elemento{}
+.card__image{} (elemento de la clase card)
+
+--->Modifier: .bloque--modificador{}
+.card__image--small{} (modificador de la clase card__image)
+
+--------------------------------------------------------------------------------------
+
+--->UTILITY FIRST: Utilizar clases de utilidad para dar estilos rapidamente
+.text-center{ text-align: center; }
+.text-left{ text-align: left; }
+.text-right{ text-align: right; }
+
+--------------------------------------------------------------------------------------
+
+--->MODULOS: Crear modulos de estilos para cada parte de la pagina
+.card{}
+.card h2{}
+.card p{}
+
+--------------------------------------------------------------------------------------
+*/
+
+/*
+RESPONSIVE DESIGN:
+--------------------------------------------------------------------------------------
+--->Viewport: Es el area visible de la pagina web
+--->Media queries: Permiten aplicar estilos dependiendo del tamaño de la pantalla
+--->Mobile first: Diseñar la pagina web para moviles y luego ir adaptandola a pantallas mas grandes
+--->Media queries: Permiten aplicar estilos dependiendo del tamaño de la pantalla
+--------------------------------------------------------------------------------------
+
+PONER CONDICIONES PARA LA EJECUCION DEL CODIGO SUPONIENDO LA RESOLUCION
+
+*/
+
+/*
+MODELO DE CAJAS EN CSS:El tamaño de un elemento en CSS se compone de 4 partes:
+
+Tienen que poder cuadrase todo - entrar PAUL AURISH y asi poder hacer el box sizing
+*/
+:root{
+
+    --blanco: #ffffff;
+    --negro: #212121;
+    --primario: #ffc107;
+    --secundario: #F8DE7E;
+    --azul_cian: #55B4B0;
+
+    --tamaño_titulo: 2rem;
+
+}
+
+html {
+
+    font-size: 62.5%;
+    font-family: "Krub", sans-serif
+    /* box-sizing: border-box; */
+    
+}
+
+/*Es lenguaje normal *-->para todos , poner una coma para poder ahorrar codigo (.clase, .subclase{..}).
+-->CONTENT: contenido de un codigo, poner after despues .titulo:after { content: ......} */
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+
+    font-size: 16px;
+    background-color: #dad8d8;
+    scroll-snap-type: mandatory;
+}
+
+.sombra{
+
+    -webkit-box-shadow: -11px 14px 29px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -11px 14px 29px -10px rgba(0,0,0,0.75);
+    box-shadow: -11px 14px 29px -10px rgba(0,0,0,0.75);
+
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: .5rem;
+
+}
+
+/*
+*Hasta aqui, es obligatorio si queremos mantener una buiena relacion de aspecto entre distintos dispositivos
+*/
+
+h1{
+font-size: 3rem;
+}
+
+h2{
+font-size: 2.8rem;
+}
+
+h3{
+    font-size: 1.8rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+.titulo {
+    
+        font-size: 4rem;
+        color: var(--blanco);
+        text-align: center;
+        font-family: "Krub", sans-serif;
+        font-weight: normal;
+}
+
+.titulo span{
+
+    font-size: 4rem;
+    color: #000000;
+
+}
+
+.contenedor{
+
+    max-width:  120rem;
+    margin: 0 auto;
+
+}
+
+.titulo_main {
+
+    text-align: center;
+
+}
+
+.nav_bg{
+
+    background-color: var(--azul_cian);
+
+}
+
+.navegacion_principal {
+
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+/*
+*Media queries, sirven apra adaptar el diseño de la pagina web a distintos dispositivos
+se fefine el css.jon con ctrl+shift+p y escribiendo "css"
+y modificamos el archivo css
+con "Crea un Media Queri" : {
+
+		"prefix": "mq",
+		"body": "@media (min-width: $1px) {\n    $2\n}"
+	}
+*/
+
+@media (min-width: 480px) {
+    .navegacion_principal {
+        flex-direction: row;
+        padding: 2rem;
+    }
+}
+@media (min-width: 768px) {
+    .navegacion_principal {
+        flex-direction: row;
+        padding: 2rem;
+    }
+}
+
+
+.navegacion_principal a{
+
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: normal;
+    
+}
+
+.navegacion_principal a:hover{
+
+    background-color: var(--secundario);
+    color: var(--azul_cian);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: normal;
+    padding: 1rem 2rem;
+
+}
+
+.navegacion_principal a:focus{
+    
+    color: red;
+
+}
+
+/*Para poder justificar bien, tenemo que ponerle al padre una posicion relativa y al hijo posicion absoluta*/
+.imagen{
+
+    background-image: url(hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 45rem;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.imagen_contenido {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 40%);
+    
+    /*Cuando cambiamos a flex direction a column, entonces para poder justificar de forma orizontal tendremos que utilizar justify content en vez de align-item*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.imagen_contenido h2, .imagen_contenido p{
+    
+     color: var(--blanco);
+}
+
+.boton{
+    background-color: var(--azul_cian);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+
+}
+
+@media (min-width: 480px) {
+    .boton{
+        width: auto;
+    }
+}
+
+/*
+CSS GRID:Grid es un sistema de diseño bidimensional que se puede utilizar para crear diseños complejos y flexibles.
+
+
+*/
+
+.servicio{
+
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+@media (min-width: 780px) {
+
+    .servicios{
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1rem;
+    }
+    
+}
+
+.servicio{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.servicio h3{
+
+    color: var(--azul_cian);
+}
+
+.servicio p{
+
+    line-height: 2;
+    text-align: center;
+}
+
+.servicio .icono{
+
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario{
+
+    background-color: var(--secundario);
+    width: min(60rem, 100%);
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    padding: 2rem;
+
+}
+
+.formulario legend{
+
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.formulario fieldset{
+    border: none;
+
+}
+
+.contenedor_formulario{
+
+
+}
+
+.campo{
+
+    margin-bottom: 2rem;
+}
+
+
+.campo label{
+
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: 5rem;
+    padding: 1.5rem;
+    margin-bottom: auto;
+    margin-top: 1rem;
+
+}
+
+.campo input[type="text"], .campo input[type="email"], .campo input[type="number"]{
+
+    width: 95%;
+    margin-top: .5rem;
+    border: none;
+    border-radius: .5rem;
+    padding: 1.5rem;
+
+}
+
+.campo textarea{
+
+    width: 95%;
+    margin-top: .5rem;
+    border: none;
+    border-radius: .5rem;
+    padding: 1.5rem;
+    height: 20rem;
+
+
+}
+
+.formulario .boton_enviar {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/*Gestion de botones para diferentes dispositivos minutos 3:36 del capitulo 50*/
+
+.derechos{
+
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+.boton:hover{
+
+}
+
+/*Utilizar clase para ajilizar el proceso de poder gestionar propiedaes cominues*/
