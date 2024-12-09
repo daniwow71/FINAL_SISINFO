@@ -19,7 +19,7 @@
                 <button>Buscar</button>
             </div>
             <div class="profile-menu">
-                <button id="profile-button">Tu Perfil &#9660;</button>
+                <button id="profile-button">Tu Perfil</button>
                 <div class="dropdown-content" id="dropdown">
                     <a href="#">Mi cuenta</a>
                     <a href="#">Historial</a>
@@ -47,6 +47,19 @@
                 </div>
             </section>
         </main>
+
+        <!-- Ventana emergente (modal) para mostrar la información del juego -->
+        <div id="game-info-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 class="modal-title"></h2>
+                <img class="modal-image" src="" alt="">
+                <p class="modal-description"></p>
+                <p class="modal-rate"></p>
+                <p class="modal-genre"></p>
+                <div class="modal-price"></div> <!-- Añadido para mostrar el precio -->
+            </div>
+        </div>
 
     <script src="script.js"></script>
 </body>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cesta</title>
+    <link rel="stylesheet" href="cesta.css">
+    <script src="cesta.js" defer></script>
+</head>
+<body>
+    <div class="background"></div> <!-- Fondo difuminado -->
+    <header>
+        <h1>Mi Cesta</h1>
+    </header>
+    <main>
+        <button class="back-button" onclick="history.back()">Volver Atrás</button>
+        <section class="cart">
+            <h2>Artículos en la Cesta</h2>
+            <ul id="cart-list">
+                <!-- Los juegos en la cesta se cargarán aquí dinámicamente -->
+                <li class="cart-item">
+                    <span class="cart-item-title">Juego 1</span>
+                    <span class="cart-item-price">$10.00</span>
+                    <button class="remove-item-button">Eliminar</button>
+                </li>
+                <li class="cart-item">
+                    <span class="cart-item-title">Juego 2</span>
+                    <span class="cart-item-price">$15.00</span>
+                    <button class="remove-item-button">Eliminar</button>
+                </li>
+            </ul>
+            <button id="checkout-button">Proceder al Pago</button>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,3 +1,4 @@
+/* Estilos generales */
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +23,7 @@ body {
     z-index: -1; /* Envía este contenedor al fondo */
 }
 
+/* Estilo del header */
 header {
     display: flex;
     justify-content: space-between;
@@ -35,61 +37,47 @@ header {
     font-size: 24px;
 }
 
+/* Estilo de la barra de búsqueda */
 .search-bar {
     display: flex;
-    flex: 1;
+    align-items: center;
     justify-content: center;
-    margin: 0 20px;
-}
-
-.add-to-cart{
-
-    padding: 10px;
-    background-color: #ff6b00;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-
-}
-
-.informacion-producto {
-
-    padding: 10px;
-    background-color: #ff6b00;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-
+    flex: 1;
+    margin-right: 20px;
 }
 
 .search-bar input {
-    width: 60%;
-    padding: 10px;
+    flex: 1;
+    padding: 5px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
+    margin-right: 10px;
+    max-width: 500px; /* Limita el ancho máximo */
 }
 
 .search-bar button {
-    padding: 10px;
-    background-color: #ff6b00;
-    color: white;
+    padding: 5px 10px;
+    font-size: 16px;
     border: none;
     border-radius: 5px;
+    background-color: #ff6b00;
+    color: white;
     cursor: pointer;
 }
 
+/* Estilo del menú de perfil */
 .profile-menu {
     position: relative;
 }
 
-#profile-button {
+.profile-menu button {
     background-color: #ff6b00;
-    color: white;
-    padding: 10px;
     border: none;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
+    padding: 5px 10px;
     border-radius: 5px;
 }
 
@@ -115,38 +103,20 @@ header {
     background-color: #575757;
 }
 
-main {
-    padding: 20px;
+.profile-menu:hover .dropdown-content {
+    display: block;
 }
 
-.popular-games {
-
-    text-align: center;
+/* Estilo del carrito */
+.cart {
+    position: relative;
+    margin-left: 10px;
 }
 
-.game-list {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.game-card {
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 200px;
-    text-align: center;
-}
-
-.game-card img {
-    max-width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.game-card h3 {
-    font-size: 18px;
+.cart button {
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .cart-icon {
@@ -170,3 +140,205 @@ main {
     fill: none; /* Sin fondo para el SVG */
     stroke: #ffffff; /* Color del trazo del SVG */
 }
+
+/* Estilo del main */
+main {
+    padding: 20px;
+}
+
+.popular-games {
+    text-align: center;
+}
+
+.game-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6 columnas en pantallas grandes */
+    gap: 20px; /* Espacio entre las tarjetas */
+    margin-top: 20px;
+}
+
+/* Estilo de las tarjetas de los juegos */
+.game-card {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    flex: 1 1 calc(16.66% - 20px); /* Ajusta el tamaño de las tarjetas para mostrar 6 por fila */
+    box-sizing: border-box;
+    text-align: center;
+    max-width: 200px; /* Tamaño máximo de las tarjetas */
+}
+
+.game-card img {
+    width: 100%;
+    height: 150px; /* Ajusta la altura de las imágenes */
+    object-fit: contain; /* Asegura que las imágenes se ajusten al contenedor sin cortarse */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.game-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.add-to-cart, .informacion-producto {
+    background-color: #ff6b00;
+    color: white;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* Estilo de la ventana emergente (modal) */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro */
+    justify-content: center; /* Centrar modal */
+    align-items: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 850px; /* Ancho máximo del modal */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Botón de cierre */
+.close-modal {
+    color: #ff6b00; /* Color del botón de cierre */
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #ff4500;
+    text-decoration: none;
+}
+
+/* Título del modal */
+.modal-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Imagen del juego */
+.modal-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Descripción del juego */
+.modal-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #555;
+    text-align: left;
+    padding: 0 20px;
+}
+
+/* Rango y género */
+.modal-rate,
+.modal-genre {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ff6b00; /* Color de acento */
+    font-weight: 600;
+    text-align: left;
+    padding: 0 20px;
+}
+
+.modal-rate span,
+.modal-genre span {
+    font-weight: normal;
+    color: #333;
+}
+
+/* Acciones del modal */
+.modal-actions {
+    margin-top: 20px;
+}
+
+/* Botones dentro del modal */
+.add-to-cart,
+.informacion-producto {
+    background-color: #ff6b00;
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra a los botones */
+}
+
+.add-to-cart:hover,
+.informacion-producto:hover {
+    background-color: #ff4500;
+}
+
+/* Tiempos de transición de la imagen del modal */
+.modal-image {
+    transition: transform 0.3s ease;
+}
+
+.modal-image:hover {
+    transform: scale(1.05); /* Efecto hover */
+}
+
+/* Precio del juego en el modal */
+.modal-price {
+    position: absolute;
+    bottom: 20px; /* Cambiado para posicionar en la parte inferior */
+    right: 20px;
+    background-color: #ff6b00;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+

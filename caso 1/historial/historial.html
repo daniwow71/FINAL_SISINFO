@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Transacciones</title>
+    <link rel="stylesheet" href="historial.css">
+</head>
+<body>
+    <div class="background"></div>
+    <header>
+        <h1>Historial de Transacciones</h1>
+    </header>
+    <main>
+        <button class="back-button" onclick="history.back()">Volver Atrás</button>
+        <div class="history-container">
+            <h2>Transacciones</h2>
+            <ul id="history-list">
+                <!-- Las transacciones se cargarán aquí dinámicamente -->
+            </ul>
+        </div>
+    </main>
+    <script src="historial.js"></script>
+</body>
+</html>

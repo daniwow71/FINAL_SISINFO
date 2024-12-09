@@ -1,0 +1,180 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://img.freepik.com/fotos-premium/arbol-paisaje-piscina-agua-edificio-cascada-fondo_1073582-4787.jpg?semt=ais_hybrid');  /* Cambia a la URL de tu imagen */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Aplica el desenfoque */
+    z-index: -1; /* Envía este contenedor al fondo */
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.account-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.account-info,
+.update-account {
+    flex: 1;
+    margin: 10px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ff6b00;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ff4500;
+}
+
+.owned-games {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo con un poco de transparencia */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más sutil */
+}
+
+/* Estilo de la lista de juegos */
+.owned-games ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo de cada elemento de la lista de juegos */
+.owned-games li {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px; /* Esquinas más redondeadas */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    display: flex;
+    justify-content: space-between; /* Asegura que la imagen y el texto estén alineados */
+    align-items: center; /* Centra verticalmente */
+    transition: all 0.3s ease; /* Suaviza la transición de hover */
+}
+
+.owned-games li:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Aumenta la sombra al pasar el mouse */
+    transform: translateY(-5px); /* Da un efecto de desplazamiento hacia arriba */
+}
+
+/* Estilo para la imagen del juego */
+.owned-games li img {
+    width: 120px; /* Aumentamos el ancho de la imagen */
+    height: auto; /* Mantiene la proporción original de la imagen */
+    object-fit: cover; /* Asegura que la imagen se recorte adecuadamente */
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+/* Estilo del texto de cada juego */
+.owned-games li .game-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.owned-games li .game-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+.owned-games li .game-info p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 0 0; /* Espacio para el precio o descripción */
+}
+
+/* Estilo del botón para eliminar juego */
+.owned-games li button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.owned-games li button:hover {
+    background-color: #ff1a1a; /* Color más intenso en hover */
+}
+
+/* Botón de volver atrás */
+.back-button {
+    background-color: #ff6b00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #ff4500;
+}

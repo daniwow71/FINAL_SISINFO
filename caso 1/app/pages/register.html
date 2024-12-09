@@ -12,18 +12,19 @@
             const username = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirmDate = document.getElementById('confirm-date').value;
+            const birthDate = document.getElementById('birth-date').value;
 
             const response = await fetch('/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ username, email, password, confirmDate })
+                body: JSON.stringify({ username, email, password, birthDate })
             });
 
             if (response.ok) {
-                window.location.href = '../casoEstudio1.html'; // Redirige a casoEstudio1.html
+                alert('Usuario registrado con éxito'); // Muestra la notificación
+                window.location.href = '/login.html'; // Redirige a la página de inicio de sesión
             } else {
                 alert('Error en el registro');
             }
@@ -31,6 +32,7 @@
     </script>
 </head>
 <body>
+    <div class="background"></div> <!-- Fondo difuminado -->
     <header>
         <h1>Registro</h1>
     </header>
@@ -51,12 +53,11 @@
                     <input type="password" id="password" name="password" required>
                 </div>
                 <div class="form-group">
-                    <label for="confirm-date">Fecha Nacimiento:</label>
-                    <input type="date" id="confirm-date" name="confirm-date" required>
+                    <label for="birth-date">Fecha de Nacimiento:</label>
+                    <input type="date" id="birth-date" name="birth-date" required>
                 </div>
                 <button type="submit">Registrarse</button>
             </form>
-            <p>¿Ya tienes una cuenta? <a href="/">Inicia sesión aquí</a></p>
         </section>
     </main>
 </body>
