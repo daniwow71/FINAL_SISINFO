@@ -157,22 +157,20 @@ app.get('/api/game-info', async (req, res) => {
 app.post('/proceed-to-payment', authenticateToken, async (req, res) => {
   const { gameName } = req.body;
   const keyOwner = req.user.userName;
+  const fecha = new Date().toISOString().split('T')[0]; // Generar la fecha actual en formato YYYY-MM-DD
 
   try {
-    const game = await juegoDAO.getGameByName(gameName);
-    if (!game) {
-      return res.status(404).json({ error: 'Juego no encontrado' });
-    }
-
-    const gameKey = generateGameKey(); // Generar una clave aleatoria de 10 dígitos
-    const newKey = await keyDAO.addKey(gameKey, gameName, keyOwner);
+    // Generar una clave aleatoria
+    const gameKey = generateGameKey();
 
     // Crear una nueva transacción
-    const fecha = new Date().toISOString().split('T')[0];
-    const newTransaccion = new TransaccionVO(keyOwner, gameName, fecha);
+    const newTransaccion = new TransaccionVO(null, keyOwner, gameName, fecha);
     await transaccionDAO.addTransaccion(newTransaccion);
 
-    res.status(201).json(newKey);
+    // Añadir la clave del juego
+    await keyDAO.addKey(gameKey, gameName, keyOwner);
+
+    res.status(201).json({ gameKey });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
