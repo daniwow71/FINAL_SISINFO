@@ -14,32 +14,50 @@
     </header>
     <main>
         <button class="back-button" onclick="history.back()">Volver Atrás</button>
-        <div class="account-container">
-            <section class="account-info">
-                <h2>Información Actual</h2>
-                <p><strong>Nombre de Usuario:</strong> <span id="current-username"></span></p>
-                <p><strong>Correo Electrónico:</strong> <span id="current-email"></span></p>
-                <p><strong>Fecha de Nacimiento:</strong> <span id="current-birth-date"></span></p>
-            </section>
-            <section class="update-account">
-                <h2>Actualizar Información</h2>
-                <form id="update-account-form">
-                    <label for="username">Nombre de Usuario:</label>
-                    <input type="text" id="username" name="username" required>
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="birth-date">Fecha de Nacimiento:</label>
-                    <input type="date" id="birth-date" name="birth-date" required>
-                    <button type="submit">Actualizar</button>
-                </form>
-            </section>
+        <div class="main-layout">
+            <!-- Contenedor Izquierdo -->
+            <div class="left-container">
+                <!-- Sección de Perfil -->
+                <div class="profile-details">
+                    <div class="account-container">
+                        <section class="account-info">
+                            <h2>Información Actual</h2>
+                            <p><strong>Nombre de Usuario:</strong> <span id="current-username"></span></p>
+                            <p><strong>Correo Electrónico:</strong> <span id="current-email"></span></p>
+                            <p><strong>Fecha de Nacimiento:</strong> <span id="current-birth-date"></span></p>
+                        </section>
+                        <section class="update-account">
+                            <h2>Actualizar Información</h2>
+                            <form id="update-account-form">
+                                <label for="username">Nombre de Usuario:</label>
+                                <input type="text" id="username" name="username" placeholder="Escribe tu nombre de usuario" required>
+                                <label for="email">Correo Electrónico:</label>
+                                <input type="email" id="email" name="email" placeholder="Escribe tu correo electrónico" required>
+                                <label for="birth-date">Fecha de Nacimiento:</label>
+                                <input type="date" id="birth-date" name="birth-date" required>
+                                <button type="submit">Actualizar</button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
+
+                <!-- Sección de Mis Juegos -->
+                <div class="owned-games">
+                    <h2>Mis Juegos</h2>
+                    <ul id="owned-games-list">
+                        <!-- Juegos cargados dinámicamente -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sección de Valoraciones -->
+            <div class="user-valoraciones">
+                <h2>Mis Valoraciones</h2>
+                <ul id="valoraciones-list">
+                    <!-- Valoraciones cargadas dinámicamente -->
+                </ul>
+            </div>
         </div>
-        <section class="owned-games">
-            <h2>Juegos en Posesión</h2>
-            <ul id="owned-games-list">
-                <!-- Los juegos se cargarán aquí dinámicamente -->
-            </ul>
-        </section>
     </main>
 </body>
 </html>

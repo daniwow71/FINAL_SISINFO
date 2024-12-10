@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const currentUsername = document.getElementById('current-username');
     const currentEmail = document.getElementById('current-email');
     const currentBirthDate = document.getElementById('current-birth-date');
-    const cartList = document.getElementById('cart-list');
+    const valoracionesList = document.getElementById('valoraciones-list');
 
     async function loadAccountInfo() {
         const userName = localStorage.getItem('userName');
@@ -63,9 +63,54 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    async function loadUserValoraciones() {
+        try {
+            const response = await fetch('/api/user-valoraciones', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            });
+            if (!response.ok) {
+                throw new Error('No se pudo obtener las valoraciones del usuario');
+            }
+            const valoraciones = await response.json();
+            valoracionesList.innerHTML = '';
+            for (const valoracion of valoraciones) {
+                try {
+                    const gameResponse = await fetch(`/api/game-info?gameName=${valoracion.game_name}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    if (!gameResponse.ok) {
+                        throw new Error('No se pudo obtener la información del juego');
+                    }
+                    const gameInfo = await gameResponse.json();
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `
+                        <img src="${gameInfo.game_poster}" alt="${valoracion.game_name}" />
+                        <div class="valoracion-info">
+                            <h3>${valoracion.game_name}</h3>
+                            <p>${valoracion.valoracion}</p>
+                            <span class="fecha">${new Date(valoracion.fecha).toLocaleDateString()}</span>
+                        </div>
+                    `;
+                    valoracionesList.appendChild(listItem);
+                } catch (error) {
+                    console.error('Error cargando la información del juego:', error);
+                }
+            }
+        } catch (error) {
+            console.error('Error cargando las valoraciones del usuario:', error);
+        }
+    }
+
     async function updateAccount(event) {
         event.preventDefault();
-        const username = document.getElementById('username').value;
+        const userName = document.getElementById('username').value;
         const email = document.getElementById('email').value;
         const birthDate = document.getElementById('birth-date').value;
 
@@ -76,41 +121,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
                 },
-                body: JSON.stringify({ user_name: username, user_mail: email, birth_date: birthDate })
+                body: JSON.stringify({ user_name: userName, user_mail: email, birth_date: birthDate })
             });
             if (!response.ok) {
-                const errorData = await response.json();
-                alert(`Error: ${errorData.message}`);
-                throw new Error('No se pudo actualizar la información de la cuenta');
+                throw new Error('No se pudo actualizar la cuenta');
             }
-            alert('Información de la cuenta actualizada con éxito');
-            loadAccountInfo(); // Recargar la información actualizada
+            alert('Cuenta actualizada con éxito');
+            loadAccountInfo();
         } catch (error) {
-            console.error('Error actualizando la información de la cuenta:', error);
-        }
-    }
-
-    async function addToCart(gameName) {
-        try {
-            const response = await fetch(`/api/game-info?gameName=${gameName}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            if (!response.ok) {
-                throw new Error('No se pudo obtener la información del juego');
-            }
-            const gameInfo = await response.json();
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `
-                <img src="${gameInfo.game_poster}" alt="${gameInfo.game_name}" />
-                <span>${gameInfo.game_name}</span>
-                <span>${gameInfo.game_cost}</span>
-            `;
-            cartList.appendChild(listItem);
-        } catch (error) {
-            console.error('Error agregando el juego a la cesta:', error);
+            console.error('Error actualizando la cuenta:', error);
         }
     }
 
@@ -118,4 +137,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     loadAccountInfo();
     loadOwnedGames();
+    loadUserValoraciones();
 });

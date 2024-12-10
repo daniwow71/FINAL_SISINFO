@@ -1,3 +1,4 @@
+/* Estilo de fondo y contenedores */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -12,7 +13,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://img.freepik.com/fotos-premium/arbol-paisaje-piscina-agua-edificio-cascada-fondo_1073582-4787.jpg?semt=ais_hybrid');  /* Cambia a la URL de tu imagen */
+    background-image: url('https://img.freepik.com/fotos-premium/arbol-paisaje-piscina-agua-edificio-cascada-fondo_1073582-4787.jpg?semt=ais_hybrid'); 
     background-size: cover;
     background-position: center;
     filter: blur(8px); /* Aplica el desenfoque */
@@ -29,142 +30,163 @@ header {
 main {
     padding: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
-.account-container {
+/* Diseño general */
+.main-layout {
     display: flex;
-    justify-content: space-between;
+    gap: 20px; /* Espacio entre columnas */
+    max-width: 1200px;
     width: 100%;
-    max-width: 800px;
-    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Contenedor izquierdo: Perfil + Juegos */
+.left-container {
+    flex: 2; /* Ocupa más espacio */
+    display: flex;
+    flex-direction: column; /* Elementos en columna */
+    gap: 20px; /* Espacio entre las secciones */
+}
+
+/* Perfil */
+.profile-details {
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.account-info,
+/* Actualizar Información */
 .update-account {
-    flex: 1;
-    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc; /* Menos llamativo */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
 }
 
-h2 {
-    margin-top: 0;
+.update-account h2 {
+    text-align: center;
+    font-size: 20px; /* Menor tamaño de fuente */
+    color: #333;
+    margin-bottom: 15px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-}
-
-label {
-    margin-top: 10px;
+    gap: 12px; /* Menos espacio entre los campos */
 }
 
 input {
-    padding: 5px;
-    margin-top: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px;
+    padding: 12px;
     background-color: #ff6b00;
     color: white;
+    font-weight: bold;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #ff4500;
 }
 
-.owned-games {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 800px;
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo con un poco de transparencia */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más sutil */
-}
-
-/* Estilo de la lista de juegos */
+/* Mis Juegos (tarjetas) */
 .owned-games ul {
-    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Diseño de tarjetas */
+    gap: 20px;
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Estilo de cada elemento de la lista de juegos */
 .owned-games li {
-    background-color: #ffffff;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px; /* Esquinas más redondeadas */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
-    display: flex;
-    justify-content: space-between; /* Asegura que la imagen y el texto estén alineados */
-    align-items: center; /* Centra verticalmente */
-    transition: all 0.3s ease; /* Suaviza la transición de hover */
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.3s ease;
 }
 
 .owned-games li:hover {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Aumenta la sombra al pasar el mouse */
-    transform: translateY(-5px); /* Da un efecto de desplazamiento hacia arriba */
+    transform: translateY(-5px); /* Efecto hover */
 }
 
-/* Estilo para la imagen del juego */
 .owned-games li img {
-    width: 120px; /* Aumentamos el ancho de la imagen */
-    height: auto; /* Mantiene la proporción original de la imagen */
-    object-fit: cover; /* Asegura que la imagen se recorte adecuadamente */
+    width: 100%;
+    height: auto;
     border-radius: 5px;
-    margin-right: 15px;
 }
 
-/* Estilo del texto de cada juego */
-.owned-games li .game-info {
-    flex: 1;
+.owned-games li span {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: bold; /* Añadir negrita */
+}
+
+/* Resaltar títulos de juegos */
+.owned-games li span:first-child {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333; /* Color más oscuro para el título */
+}
+
+/* Valoraciones */
+.user-valoraciones {
+    flex: 3; /* Ocupa más espacio */
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+}
+
+.user-valoraciones ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-valoraciones li {
+    display: flex;
+    gap: 15px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-valoraciones li img {
+    width: 300px; /* Ajustar el ancho de las imágenes */
+    height: auto; /* Mantener la proporción de las imágenes */
+    border-radius: 5px;
+}
+
+.user-valoraciones li .valoracion-info {
     display: flex;
     flex-direction: column;
 }
 
-.owned-games li .game-info h3 {
-    margin: 0;
-    font-size: 18px;
-    color: #333;
-    font-weight: bold;
-}
-
-.owned-games li .game-info p {
-    font-size: 14px;
-    color: #666;
-    margin: 5px 0 0 0; /* Espacio para el precio o descripción */
-}
-
-/* Estilo del botón para eliminar juego */
-.owned-games li button {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.owned-games li button:hover {
-    background-color: #ff1a1a; /* Color más intenso en hover */
-}
-
-/* Botón de volver atrás */
 .back-button {
-    background-color: #ff6b00;
+    background-color: #3e667e;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -172,6 +194,9 @@ button:hover {
     cursor: pointer;
     font-size: 16px;
     margin-bottom: 20px;
+    position: absolute; 
+    top: 50px; 
+    right: 10px; 
     transition: background-color 0.3s ease;
 }
 

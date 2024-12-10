@@ -20,6 +20,21 @@
             </ul>
         </div>
     </main>
+    <div id="valoracion-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-valoracion-modal">&times;</span>
+            <h2>Valorar Juego</h2>
+            <p class="modal-game-name"></p>
+            <form id="valoracion-form">
+                <textarea id="valoracion-text" maxlength="100" required></textarea>
+                <label>
+                    <input type="checkbox" id="valoracion-positiva">
+                    Valoración Positiva
+                </label>
+                <button type="submit">Enviar Valoración</button>
+            </form>
+        </div>
+    </div>
     <script src="historial.js"></script>
 </body>
 </html>

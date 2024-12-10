@@ -1,4 +1,50 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+
+    function openValoracionModal(gameName) {
+        document.getElementById('valoracion-modal').style.display = 'flex';
+        document.querySelector('.modal-game-name').textContent = gameName;
+    }
+
+    // Función para cerrar el modal de valoración
+    function closeValoracionModal() {
+        document.getElementById('valoracion-modal').style.display = 'none';
+        document.getElementById('valoracion-form').reset();
+    }
+
+    // Función para enviar la valoración
+    async function submitValoracion(event) {
+        event.preventDefault();
+        const gameName = document.querySelector('.modal-game-name').textContent;
+        const valoracion = document.getElementById('valoracion-text').value;
+        const positiva = document.getElementById('valoracion-positiva').checked;
+
+        try {
+            const response = await fetch('/api/add-valoracion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({ gameName, valoracion, positiva })
+            });
+            if (!response.ok) {
+                throw new Error('No se pudo añadir la valoración');
+            }
+            alert('Valoración añadida con éxito');
+            closeValoracionModal();
+        } catch (error) {
+            console.error('Error añadiendo la valoración:', error);
+        }
+    }
+
+    // Añadir evento al formulario de valoración
+    document.getElementById('valoracion-form').addEventListener('submit', submitValoracion);
+
+    // Añadir evento al botón de cerrar el modal de valoración
+    document.querySelector('.close-valoracion-modal').addEventListener('click', closeValoracionModal);
+
+
     async function loadTransactionHistory() {
         const historyList = document.getElementById('history-list');
         historyList.innerHTML = '';
@@ -45,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <span>${formattedDate}</span>
                     <span>${formattedPrice}</span>
                     <button class="return-button" data-transaction-id="${transaction.ID}" data-game-name="${transaction.game_name}">Devolver</button>
+                    <button class="valoracion-button" data-game-name="${transaction.game_name}">Valorar</button>
                 `;
                 historyList.appendChild(listItem);
             }
@@ -73,10 +120,19 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
             });
+
+            // Añadir evento de clic a los botones de valoración
+            document.querySelectorAll('.valoracion-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const gameName = this.getAttribute('data-game-name');
+                    openValoracionModal(gameName);
+                });
+            });
         } catch (error) {
             console.error('Error cargando el historial de transacciones:', error);
         }
     }
 
     loadTransactionHistory();
+
 });

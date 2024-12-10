@@ -32,6 +32,12 @@ document.addEventListener("DOMContentLoaded", function() {
         modal.style.opacity = '1';  // Hace visible el modal
     }
 
+    // Funcionalidad para ver valoraciones
+    function viewValoraciones() {
+        const gameName = document.querySelector('.modal-title').textContent;
+        window.location.href = `./valoraciones/valoracion.html?gameName=${gameName}`;
+    }
+
     // Cerrar la ventana emergente
     function closeModal() {
         const modal = document.getElementById('game-info-modal');
@@ -55,11 +61,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const closeModalButton = document.querySelector('.close-modal');
         closeModalButton.addEventListener("click", closeModal);
+
+        const valoracionesButton = document.querySelector('.valoraciones-button');
+        valoracionesButton.addEventListener("click", viewValoraciones);
     }
 
     // Redirigir a la página de cesta
     document.getElementById("cart-button").addEventListener("click", function() {
-        window.location.href = "./cesta/cesta.html"; // Redirige a la nueva página
+        window.location.href = "cesta.html"; // Redirige a la nueva página
     });
 
     // Función para cargar los juegos y añadir los eventos

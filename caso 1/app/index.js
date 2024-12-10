@@ -9,6 +9,8 @@ import KeyDAO from "./dao/KeyDAO.js";
 import TransaccionDAO from "./dao/TransaccionDAO.js";
 import UserVO from "./vo/UserVO.js";
 import TransaccionVO from "./vo/TransaccionVO.js";
+import ValoracionVO from "./vo/ValoracionVO.js";
+import ValoracionDAO from "./dao/ValoracionDAO.js";
 import pool from "./databaseConfig.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -18,6 +20,9 @@ app.set("port", 4000);
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.static(path.join(__dirname, "../")));
 app.use(express.static(path.join(__dirname, '/pages')));
+app.use(express.static(path.join(__dirname, "../valoraciones")));
+app.use(express.static(path.join(__dirname, "../cesta")));
+
 
 app.use(bodyParser.json());
 
@@ -25,6 +30,7 @@ const userDAO = new UserDAO();
 const juegoDAO = new JuegoDAO();
 const keyDAO = new KeyDAO();
 const transaccionDAO = new TransaccionDAO();
+const valoracionDAO = new ValoracionDAO();
 
 const SECRET_KEY = "your_secret_key"; // Define una clave secreta para firmar el token
 
@@ -75,6 +81,45 @@ app.post('/login', async (req, res) => {
     const token = jwt.sign({ userName: user.user_name }, SECRET_KEY, { expiresIn: '1h' });
 
     res.status(200).json({ message: 'Inicio de sesión exitoso', token, redirectUrl: '/casoEstudio1' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+app.post('/api/add-valoracion', authenticateToken, async (req, res) => {
+  const { gameName, valoracion, positiva } = req.body;
+  const userName = req.user.userName;
+  const fecha = new Date().toISOString().split('T')[0]; // Generar la fecha actual en formato YYYY-MM-DD
+
+  try {
+    const newValoracion = new ValoracionVO(null, userName, gameName, valoracion, fecha, positiva);
+    const addedValoracion = await valoracionDAO.addValoracion(newValoracion);
+    res.status(201).json(addedValoracion);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+app.get('/api/user-valoraciones', authenticateToken, async (req, res) => {
+  const userName = req.user.userName;
+
+  try {
+    const valoraciones = await valoracionDAO.getValoracionesByUserName(userName);
+    res.status(200).json(valoraciones);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+app.get('/api/game-valoraciones', async (req, res) => {
+  const { gameName } = req.query;
+
+  try {
+    const valoraciones = await valoracionDAO.getValoracionesByGameName(gameName);
+    res.status(200).json(valoraciones);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -224,6 +269,7 @@ app.delete('/api/return-transaction', authenticateToken, async (req, res) => {
 app.get("/", (req, res) => res.sendFile(path.join(__dirname, "./pages/login.html")));
 app.get("/register", (req, res) => res.sendFile(path.join(__dirname, "./pages/register.html")));
 app.get(/style.css/, (req, res) => res.sendFile(path.join(__dirname, "./public/style.css")));
+app.get/'/valoracion.html', (req, res) => res.sendFile(path.join(__dirname, ".,/valoraciones/valoracion.html"));
 
 app.listen(app.get("port"), () => {
   console.log(`Server corriendo en puerto ${app.get("port")}`);
